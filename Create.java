@@ -9,7 +9,7 @@ public class Create extends JFrame {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frame.setFocusable(false);
-        Screen screen = new Screen();
+        Screen screen = new Screen(frame);
         frame.add(screen);
         screen.drawing();
         Listener l = new Listener(screen);
