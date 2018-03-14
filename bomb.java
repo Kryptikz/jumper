@@ -2,6 +2,7 @@ import java.awt.Color;
 public class bomb {
     private int x;
     private int y;
+    private double temp;
     public bomb(int xx, int yy) {
         x = xx;
         y = yy;
@@ -17,5 +18,11 @@ public class bomb {
     }
     public int getY() {
         return y;
+    }
+    public void setTemp(double t) {
+        temp = t;
+    }
+    public double getTemp() {
+        return temp;
     }
 }

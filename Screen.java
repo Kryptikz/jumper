@@ -26,6 +26,7 @@ public class Screen extends JComponent {
         frame = f;
         (new Thread(new SpawnUFO(this))).start();
         score = 0;
+        lifes = 5;
     }
     public void drawing() {
         if (yy<ground && jumping == false) {
@@ -98,15 +99,22 @@ public class Screen extends JComponent {
             g.setColor(Color.BLACK);
             g.fillOval(b.getX(), b.getY(), 15, 15);
             b.setY(b.getY()+1); 
+            Rectangle r1 = new Rectangle(b.getX(), b.getY(), 15, 15);
+            Rectangle r2 = new Rectangle(xx, yy, 50, 50);
+            if (r1.intersects(r2)) {
+                lifes--;
+                bombs.remove(i);
+            }
             if (b.getY() > 800) {
                 bombs.remove(i);
             }
-            
         }
         
         g.setFont(new Font("NORMAL", Font.BOLD, 40));
         g.setColor(Color.BLACK);
         g.drawString("" + score, 10, 38);
+        g.drawString("" + lifes, 750, 38);
+        
         drawing();
     }
     public void setXX(int a) {
