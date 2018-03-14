@@ -16,7 +16,9 @@ public class Screen extends JComponent {
     JFrame frame;
     ArrayList<Rocket> rockets = new ArrayList<Rocket>();
     ArrayList<UFO> enemies = new ArrayList<UFO>();
+    ArrayList<bomb> bombs = new ArrayList<bomb>();
     private int score;
+    private int lifes;
     public Screen(JFrame f) {
         super();    
         setFocusable(false);
@@ -60,6 +62,7 @@ public class Screen extends JComponent {
                 Rectangle r1 = new Rectangle(r.getXX(), r.getYY(), 10, 40);
                 Rectangle r2 = new Rectangle(o.getX(), o.getY(), 30, 30);
                 if (r1.intersects(r2)) {
+                    enemies.get(s).die();
                     enemies.remove(s);
                     rockets.remove(i);
                     score++;
@@ -90,6 +93,17 @@ public class Screen extends JComponent {
                 u.setDirection(0);
             }
         }
+        for (int i=0; i<bombs.size(); i++) {
+            bomb b = bombs.get(i);
+            g.setColor(Color.BLACK);
+            g.fillOval(b.getX(), b.getY(), 15, 15);
+            b.setY(b.getY()+1); 
+            if (b.getY() > 800) {
+                bombs.remove(i);
+            }
+            
+        }
+        
         g.setFont(new Font("NORMAL", Font.BOLD, 40));
         g.setColor(Color.BLACK);
         g.drawString("" + score, 10, 38);
@@ -152,9 +166,12 @@ public class Screen extends JComponent {
     }
     public void addUFO() {
         int yY = 20+(int)(Math.random()*150);
-        enemies.add(new UFO(0, yY));
+        enemies.add(new UFO(0, yY, this));
     }
     public int getScore() {
         return score;
+    }
+    public void dropBomb(int x, int y) {
+        bombs.add(new bomb(x, y));
     }
 }

@@ -6,7 +6,10 @@ public class UFO {
     private double temp;
     private Color c;
     private int direction; //0 is l-r, 1 is r-l
-    public UFO(int xx, int yy) {
+    Screen s;
+    private boolean dead;
+    public UFO(int xx, int yy, Screen screen) {
+        s = screen;
         int random = (int)(Math.random()*5);
         if (random == 0) {
             c = Color.GREEN;
@@ -30,6 +33,7 @@ public class UFO {
         if (direction == 1) {
             x = 800;
         }
+        (new Thread(new BombTimer(this))).start();
     }
     public void setX(int xx) {
         x = xx;
@@ -57,5 +61,12 @@ public class UFO {
     }
     public void setDirection(int d) {
         direction = d;
+    }
+    public void dropBomb() {
+        if (!dead) 
+        s.dropBomb(x, y);
+    }
+    public void die() {
+        dead = true;
     }
 }
