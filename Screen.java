@@ -48,14 +48,12 @@ public class Screen extends JComponent {
         g.setColor(Color.BLACK);
         for (int i=0; i<rockets.size(); i++) {
             Rocket r = rockets.get(i);
-            System.out.println("DRAWING ROCKET AT (" + r.getXX() + ", " + r.getYY());
             g.fillRect(r.getXX(), r.getYY(), 10, 40);
             r.setYY(r.getYY()-1);
             if (r.getYY() < 0) {
                 rockets.remove(i);
             }
         }
-        System.out.println("X:" + xx + ", y:" + yy);
         drawing();
     }
     public void setXX(int a) {
