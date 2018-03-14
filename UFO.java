@@ -55,4 +55,7 @@ public class UFO {
     public int getDirection() {
         return direction;
     }
+    public void setDirection(int d) {
+        direction = d;
+    }
 }

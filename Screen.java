@@ -78,17 +78,16 @@ public class Screen extends JComponent {
                     u.setX(u.getX()-1);
                 } else {
                     u.setX(u.getX()+1);
-                }
-                    
+                }   
                 u.setTemp(0);
             } else {   
                     u.setTemp(u.getTemp()+.25);
             }            
-            if (u.getX() >= 800 && u.getDirection() == 0) {
-                enemies.remove(i);
+            if (u.getX() >= 770 && u.getDirection() == 0) {
+                u.setDirection(1);
             }
-            if (u.getX() <= -50 && u.getDirection() == 1) {
-                enemies.remove(i);
+            if (u.getX() <= 0 && u.getDirection() == 1) {
+                u.setDirection(0);
             }
         }
         g.setFont(new Font("NORMAL", Font.BOLD, 40));

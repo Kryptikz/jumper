@@ -8,8 +8,6 @@ public class bomb {
         y = yy;
         c = color;
     }
-    
-    
     public void setX(int xx) {
         x = xx;
     }
@@ -22,6 +20,4 @@ public class bomb {
     public int getY() {
         return y;
     }
-    
-    
 }
