@@ -27,10 +27,10 @@ public class Screen extends JComponent {
         } else {
             falling = false;
         }
-        if (rightpress == true) {
+        if (rightpress == true && xx < 750) {
             xx++;
         }
-        if (leftpress == true) {
+        if (leftpress == true && xx > 0) {
             xx--;
         }
         repaint();
@@ -98,7 +98,7 @@ public class Screen extends JComponent {
         rightpress = true;
     }
     public void upPress() {
-        rockets.add(new Rocket(xx, yy));
+        rockets.add(new Rocket(xx+20, yy));
         uppress = true;
     }
     public void spaceRelease() {
