@@ -120,7 +120,7 @@ public class Screen extends JComponent {
             g.fillOval(b.getX(), b.getY(), 15, 15);
             b.setY(b.getY()+1); 
             Rectangle r1 = new Rectangle(b.getX(), b.getY(), 15, 15);
-            Rectangle r2 = new Rectangle(xx, yy, 50, 50);
+            Rectangle r2 = new Rectangle(xx, yy+20, 50, 30);
             if (r1.intersects(r2)) {
                 lifes--;
                 bombs.remove(i);
@@ -133,11 +133,11 @@ public class Screen extends JComponent {
         g.setColor(Color.BLACK);
         g.drawString("" + score, 10, 38);
         g.drawString("" + lifes, 750, 38);
-        try {
-            Thread.sleep(1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        //try {
+        //    Thread.sleep(1);
+        //} catch (Exception e) {
+        //    e.printStackTrace();
+        //}
         drawing();
     }
     public void setXX(int a) {
