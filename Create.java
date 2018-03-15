@@ -17,5 +17,4 @@ public class Create extends JFrame {
         frame.setVisible(true);
         screen.setVisible(true);
     }
-
 }

@@ -3,6 +3,10 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 import java.lang.Math.*;
+import java.awt.Image.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.*;
 public class Screen extends JComponent {
     private int xx = 0;
     private int yy = 0;
@@ -48,7 +52,15 @@ public class Screen extends JComponent {
         g.setColor(Color.BLUE);
         g.fillRect(0,0,800,450);
         g.setColor(Color.RED);
-        g.fillRect(xx,yy,50,50);
+        //g.fillRect(xx,yy,50,50);
+        File playerfile = new File("playerimage.png");
+        BufferedImage playerimage;
+        try {
+            playerimage = ImageIO.read(playerfile);
+            g.drawImage(playerimage, xx, yy, null);            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         g.setColor(Color.GREEN);
         g.fillRect(0,450, 800, 350);
         g.setColor(Color.GRAY);
@@ -56,7 +68,15 @@ public class Screen extends JComponent {
         g.setColor(Color.BLACK);
         for (int i=0; i<rockets.size(); i++) {
             Rocket r = rockets.get(i);
-            g.fillRect(r.getXX(), r.getYY(), 10, 40);
+            //g.fillRect(r.getXX(), r.getYY(), 10, 40);
+            File rocketfile = new File("rocketimage.png");
+            BufferedImage rocketimage;
+            try {
+                rocketimage = ImageIO.read(rocketfile);
+                g.drawImage(rocketimage, r.getXX(), r.getYY(), null);            
+            } catch (Exception e) {
+                e.printStackTrace();
+            }            
             r.setYY(r.getYY()-1);
             for (int s=0; s<enemies.size(); s++) {
                 UFO o = enemies.get(s);
@@ -109,12 +129,15 @@ public class Screen extends JComponent {
                 bombs.remove(i);
             }
         }
-        
         g.setFont(new Font("NORMAL", Font.BOLD, 40));
         g.setColor(Color.BLACK);
         g.drawString("" + score, 10, 38);
         g.drawString("" + lifes, 750, 38);
-        
+        try {
+            Thread.sleep(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         drawing();
     }
     public void setXX(int a) {
